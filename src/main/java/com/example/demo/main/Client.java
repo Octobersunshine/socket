@@ -1,0 +1,101 @@
+package com.example.demo.main;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * socket
+ */
+public class Client {
+    /**
+     * java.net.Socket;
+     * 封装tcp通讯协议.使用它可以基于tcp与远程计算机
+     * 上的服务端应用程序链接并进行通讯
+     */
+    private Socket socket;
+
+    /**
+     * 初始化客户端
+     */
+    public Client() throws Exception {
+        try {
+            /**
+             * 实例化socket就是与服务器端建立链接
+             * 的过程这里需要传入两个参数来指定服务端的信息
+             * 参数1：服务端计算机的ip
+             * 参数2：运行在服务端计算机上的服务端应用程序打开的
+             * 服务端口
+             * 通过ip可以找到服务端计算机   在通过端口可以链接到
+             * 运行在服务端计算机上的服务端应用程序
+             * 由于实例化就是链接的过程若服务端没有响应这里的socket会抛出异常
+             */
+            System.out.println("正在建立链接！");
+            socket = new Socket("192.168.43.242", 31232);
+            System.out.println("与服务端建立链接");
+        } catch (Exception e) {
+            System.out.println("链接失败");
+            //将来针对异常可能要记录日志
+
+        }
+    }
+
+    /**
+     * 客户端开始工作
+     */
+    public void start(String str) {
+        try {
+            // 从socket中获取输入输出流
+
+            OutputStream outputStream = socket.getOutputStream();
+
+            PrintWriter pw = new PrintWriter(outputStream);
+            pw.println(str);
+            pw.flush();
+
+            InputStream inputStream = socket.getInputStream();
+            while(inputStream!=null){
+                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                String result = br.readLine();
+                System.out.println(result);
+            }
+
+
+
+            inputStream.close();
+            outputStream.close();
+            socket.close();
+
+        } catch (Exception e) {
+
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+
+
+        try {
+
+            //String str ="{'employees': [{'firstName': 'Bill','lastName': 'Gates'},{'firstName': 'George','lastName': 'Bush'},{'firstName': 'Thomas','lastName': 'Carter'}]}";
+            String str = "reqLoginAlarm;user=yiy;key=qw#$@;type=msg";
+            // String str="reqSyncAlarmMsg;reqId=33;alarmSeq=10";
+            Client client = new Client();
+            client.start(str);
+
+            System.out.println("本次通话结束。。。。");
+        } catch (Exception e) {
+            System.out.println("客户端运行失败");
+        }
+
+
+    }
+
+}
