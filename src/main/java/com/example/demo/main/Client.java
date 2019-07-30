@@ -66,8 +66,6 @@ public class Client {
                 System.out.println(result);
             }
 
-
-
             inputStream.close();
             outputStream.close();
             socket.close();
@@ -84,8 +82,7 @@ public class Client {
 
         try {
 
-            //String str ="{'employees': [{'firstName': 'Bill','lastName': 'Gates'},{'firstName': 'George','lastName': 'Bush'},{'firstName': 'Thomas','lastName': 'Carter'}]}";
-            String str = "reqLoginAlarm;user=yiy;key=qw#$@;type=msg";
+            String str = "reqLoginAlarm;user=iottest;key=iottest;type=msg";
             // String str="reqSyncAlarmMsg;reqId=33;alarmSeq=10";
             Client client = new Client();
             client.start(str);
