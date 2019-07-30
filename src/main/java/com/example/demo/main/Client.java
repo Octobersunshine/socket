@@ -51,10 +51,8 @@ public class Client {
      */
     public void start(String str) {
         try {
-            // 从socket中获取输入输出流
 
             OutputStream outputStream = socket.getOutputStream();
-
             PrintWriter pw = new PrintWriter(outputStream);
             pw.println(str);
             pw.flush();
@@ -65,34 +63,15 @@ public class Client {
                 String result = br.readLine();
                 System.out.println(result);
             }
-
             inputStream.close();
             outputStream.close();
             socket.close();
 
         } catch (Exception e) {
-
         }
-
 
     }
 
-    public static void main(String[] args) {
 
-
-        try {
-
-            String str = "reqLoginAlarm;user=iottest;key=iottest;type=msg";
-            // String str="reqSyncAlarmMsg;reqId=33;alarmSeq=10";
-            Client client = new Client();
-            client.start(str);
-
-            System.out.println("本次通话结束。。。。");
-        } catch (Exception e) {
-            System.out.println("客户端运行失败");
-        }
-
-
-    }
 
 }
