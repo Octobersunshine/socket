@@ -20,6 +20,9 @@ public class Client {
      * 上的服务端应用程序链接并进行通讯
      */
     private Socket socket;
+    public OutputStream outputStream ;
+    public InputStream inputStream ;
+
 
     /**
      * 初始化客户端
@@ -37,7 +40,9 @@ public class Client {
              * 由于实例化就是链接的过程若服务端没有响应这里的socket会抛出异常
              */
             System.out.println("正在建立链接！");
-            socket = new Socket("192.168.43.242", 31232);
+            socket = new Socket("192.168.1.101", 31232);
+          outputStream = socket.getOutputStream();
+           inputStream = socket.getInputStream();
             System.out.println("与服务端建立链接");
         } catch (Exception e) {
             System.out.println("链接失败");
@@ -52,20 +57,21 @@ public class Client {
     public void start(String str) {
         try {
 
-            OutputStream outputStream = socket.getOutputStream();
             PrintWriter pw = new PrintWriter(outputStream);
             pw.println(str);
             pw.flush();
 
-            InputStream inputStream = socket.getInputStream();
-            while(inputStream!=null){
+
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-                String result = br.readLine();
-                System.out.println(result);
-            }
+                String result=null;
+                while((result=br.readLine())!=null){
+                    System.out.println(result);
+                }
+
+
             inputStream.close();
             outputStream.close();
-            socket.close();
+
 
         } catch (Exception e) {
         }
