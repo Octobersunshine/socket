@@ -22,16 +22,17 @@ public class SocketClient {
         }*/
 
         try {
-            Socket s = new Socket("192.168.1.101", 31232);
+            Socket s = new Socket("192.168.43.242", 31232);
             System.out.println("客户端IP:"+s.getLocalAddress()+"端口"+s.getPort());
             //构建IO流
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
 
-            //建立键盘输入：
+            //建立键盘输入：d
             Scanner scanner = new Scanner(System.in);
             while(true){
                 System.out.println("请输入发送消息内容：");
-                bw.write(scanner.nextLine()+"\n");
+                String str1 = "reqLoginAlarm;user=iottest;key=iottest;type=msg";
+                bw.write(scanner.nextLine());
                 bw.newLine();
                 bw.flush();
                 BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
