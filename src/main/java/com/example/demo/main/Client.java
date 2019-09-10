@@ -40,7 +40,7 @@ public class Client {
              * 由于实例化就是链接的过程若服务端没有响应这里的socket会抛出异常
              */
             System.out.println("正在建立链接！");
-            socket = new Socket("192.168.1.101", 31232);
+            socket = new Socket("192.168.43.242", 31232);
           outputStream = socket.getOutputStream();
            inputStream = socket.getInputStream();
             System.out.println("与服务端建立链接");
