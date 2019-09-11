@@ -78,14 +78,14 @@ public class TestHead {
         return allMessage;
     }
 
-    public static String resolveMessage(byte[]  allMessage){
+    public static String resolveMessage(byte[]  allMessage) throws  Exception{
         short startSignParser = bytesToShort2(allMessage,0);
         byte msgTypeParser = bytesToByte(allMessage,2);
         int timeStampParser = bytesToInt2(allMessage,3);
         short bodyLenParser =  bytesToShort2(allMessage,7);
-        byte[] bodyParser = new  byte[shortToInteger(bodyLenParser)];
-        System.arraycopy(allMessage,9,bodyParser,0,shortToInteger(bodyLenParser));
-        String bodyParserStr = new String(bodyParser);
+        byte[] bodyParser = new  byte[bodyLenParser];
+        System.arraycopy(allMessage,9,bodyParser,0,bodyLenParser);
+        String bodyParserStr = new String(bodyParser,"UTF-8");
         System.out.println("resolveMsg--");
         System.out.println("startSignParser="+startSignParser+",msgTypeParser="+msgTypeParser+",timeStampParser="+timeStampParser+",bodyLenParser="+bodyLenParser+",bodyParserStr="+bodyParserStr);
         return bodyParserStr;
