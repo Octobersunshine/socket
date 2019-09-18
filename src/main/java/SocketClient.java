@@ -54,7 +54,6 @@ public class SocketClient {
             is1.read(b1);
             System.out.println("相应"+TestHead.resolveMessage(b1));
 
-
             InputStream is2=s.getInputStream();
             byte b2[]=new byte[1024*1024];
             is1.read(b2);
