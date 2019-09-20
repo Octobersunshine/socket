@@ -19,7 +19,7 @@ public class SocketClient {
         }*/
 
         try {
-            Socket s = new Socket("192.168.43.242", 31232);
+            Socket s = new Socket("192.168.1.100", 31232);
             System.out.println("客户端IP:"+s.getLocalAddress()+"端口"+s.getPort());
             //构建IO流
             OutputStream opt=s.getOutputStream();
