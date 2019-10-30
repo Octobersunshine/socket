@@ -19,7 +19,7 @@ public class SocketClient {
         }*/
 
         try {
-            Socket s = new Socket("192.168.1.100", 31232);
+            Socket s = new Socket("192.168.199.138", 31232);
             System.out.println("客户端IP:"+s.getLocalAddress()+"端口"+s.getPort());
             //构建IO流
             OutputStream opt=s.getOutputStream();
@@ -49,7 +49,7 @@ public class SocketClient {
             is.read(b);
             System.out.println("相应"+TestHead.resolveMessage(b));
 
-            InputStream is1=s.getInputStream();
+            /*InputStream is1=s.getInputStream();
             byte b1[]=new byte[1024*1024];
             is1.read(b1);
             System.out.println("相应"+TestHead.resolveMessage(b1));
@@ -57,7 +57,7 @@ public class SocketClient {
             InputStream is2=s.getInputStream();
             byte b2[]=new byte[1024*1024];
             is1.read(b2);
-            System.out.println("相应"+TestHead.resolveMessage(b2));
+            System.out.println("相应"+TestHead.resolveMessage(b2));*/
 
 
 
