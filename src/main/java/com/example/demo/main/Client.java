@@ -56,7 +56,7 @@ public class Client {
      */
     public void start(String str) {
         try {
-
+            System.out.println("fsdfsd");
             PrintWriter pw = new PrintWriter(outputStream);
             pw.println(str);
             pw.flush();
