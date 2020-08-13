@@ -56,7 +56,11 @@ public class Client {
      */
     public void start(String str) {
         try {
+
             System.out.println("fsdfsd");
+
+            System.out.println("3333");
+
             PrintWriter pw = new PrintWriter(outputStream);
             pw.println(str);
             pw.flush();
