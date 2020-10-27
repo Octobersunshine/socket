@@ -7,5 +7,5 @@ import java.lang.annotation.*;
 @Documented                 //说明该注解将被包含在javadoc中
 public @interface FieldMeta {
     String name() default "";
-    String description() default "";
+
 }

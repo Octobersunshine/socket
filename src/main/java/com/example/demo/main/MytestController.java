@@ -23,7 +23,9 @@ public class MytestController {
         oldModel.setId("1");
         oldModel.setName("张三");
 
-        // 模拟新数据
+
+
+        /*// 模拟新数据
         entity model = new  entity();
         model.setId("2");
         model.setName("李四");
@@ -37,6 +39,6 @@ public class MytestController {
             if (map.get("old") == null) map.put("old","无");
             content += map.get("name") + ":" + map.get("old") + " 变更为 " + map.get("new") + ";";
         }
-
+*/
     }
 }
